@@ -37,7 +37,9 @@ app.use((error, req, res, next) => {
     stack: error.stack
   });
 });
+let port = process.env.PORT;
+if (port == null || port == "") { port = 3000; }
 
-app.listen(process.env.port || 3000, function () {
-  console.log("server is run");
+app.listen(port, function() {
+  console.log("Server has started successfully!");
 });
