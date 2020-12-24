@@ -19,10 +19,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/api", require("./route/product"));
-app.use("/api", require("./route/student"));
-app.use("/login", require("./route/loginform"));
-// app.use("/test", require('./route/test'));
+app.use("/api", require("./route/loginform"));
 
 
 app.use((req, res, next) => {

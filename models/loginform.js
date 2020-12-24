@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const loginform_schema = new mongoose.Schema({
-  Name: {
+const loginForm_schema = new mongoose.Schema({
+  name: {
     type: String
   },
-  PhoneNo: {
+  phoneNo: {
     type: String
   },
-  Pincode: {
+  pinCode: {
     type: String
   },
   email: {
@@ -16,8 +16,21 @@ const loginform_schema = new mongoose.Schema({
   password: {
     type: String
   },
-  confimPassword: {
+  course: {
     type: String
-  }
+  },
+  city: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+  state: {
+    type: String
+  },
+  address: {
+    type: String
+  },
+  skill: [String]
 });
-module.exports = mongoose.model("test", loginform_schema);
+module.exports = mongoose.model("User", loginForm_schema);
