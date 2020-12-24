@@ -48,7 +48,7 @@ exports.signIn = function (req, res) {
                 country: req.body.country,
                 state: req.body.state,
                 address: req.body.address,
-                skill:req.body.skill
+                skill: req.body.skill
               });
               loginForm
                 .create(data)
@@ -91,18 +91,17 @@ exports.login = (req, res, next) => {
           });
         }
         if (result) {
-          const token = jwt.sign(
-            { id: results.id, email: results.email },
-            process.env.test ? process.env.test : 'SECRET_KEY',
-            {
-              expiresIn: 120000
+          const jwtToken = jwt.sign({
+            data: {
+              id: results[0].id,
+              name: results[0].name,
+              email: results[0].email
             }
-          );
-
+          }, '123123', { expiresIn: 86400 });
           return res.status(200).json({
             ResponseStatus: 0,
             message: "login successfully",
-            token: token
+            token: jwtToken
           });
         }
         res.status(200).json({

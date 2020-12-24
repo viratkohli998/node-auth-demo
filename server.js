@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 });
 
 app.use("/api", require("./route/loginform"));
-
+app.use("/api", require("./route/blog"));
 
 app.use((req, res, next) => {
   req.status = 404;
