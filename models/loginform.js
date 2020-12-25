@@ -31,6 +31,7 @@ const loginForm_schema = new mongoose.Schema({
   address: {
     type: String
   },
-  skill: [String]
+  skill: [String],
+  forgetPasswordToken: String
 });
 module.exports = mongoose.model("User", loginForm_schema);
