@@ -2,7 +2,6 @@ const router = require("express").Router();
 const loginController = require("../controllers/loginform");
 const isTokenIsValid = require("../middleware/auth");
 
-
 router.get("/login-record", loginController.loginData);
 
 router.get("/getUserById", isTokenIsValid, loginController.getUserById);

@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 var handlebars = require("handlebars");
 var fs = require("fs");
-const admin = require('firebase-admin')
 
 const user = require("../models/loginform");
 const country = require("../models/country");
