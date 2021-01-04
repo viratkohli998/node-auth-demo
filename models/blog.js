@@ -17,6 +17,9 @@ const Blog_schema = new mongoose.Schema({
     blogCreatedBy: {
         type: String,
     },
+    blogImagePath: {
+        type: String,
+    },
     // blogLike: {
     //     type: Boolean,
     // },
