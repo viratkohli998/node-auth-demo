@@ -31,6 +31,6 @@ router.post(
 
 router.delete("/deleteBlog/:id", isTokenIsValid, blogController.deleteBlog);
 
-router.get("/getBlogById", isTokenIsValid, blogController.getBlogById);
+router.get("/getBlogById/:id", isTokenIsValid, blogController.getBlogById);
 
 module.exports = router;
