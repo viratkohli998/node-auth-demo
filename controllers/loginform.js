@@ -11,6 +11,7 @@ const validationSignIn = require("../validation/loginform");
 const validationUpdateProfile = require("../validation/updateProfile");
 const validationLogin = require("../validation/login");
 const validationChangePassword = require("../validation/changePassword");
+const isEmpty = require("../validation/is-empty");
 
 exports.loginData = (req, res) => {
   user.find({}, function (err, data) {
@@ -353,4 +354,26 @@ exports.resetPassword = async (req, res) => {
         });
     }
   });
+};
+
+exports.updateProfilePic = async (req, res) => {
+  if (req.files[0].filename) {
+    const data = {
+      profilePic: req.files[0].filename,
+    };
+    console.log(data);
+    user
+      .findOneAndUpdate({ _id: req.user.id }, data)
+      .catch((err) => {
+        return res.status(202).json({
+          message: "file not exist",
+        });
+      })
+      .then((results) => {
+        return res.status(200).json({
+          ResponseStatus: 0,
+          message: "profile picture updated",
+        });
+      });
+  }
 };
