@@ -16,6 +16,10 @@ const upload = multer({
     },
   }),
   fileFilter: function (req, file, callback) {
+    var ext = path.extname(file.originalname);
+    if (ext !== ".png" && ext !== ".jpg" && ext !== ".gif" && ext !== ".jpeg") {
+      return callback(null, false);
+    }
     callback(null, true);
   },
 });
@@ -31,6 +35,12 @@ router.post(
 
 router.delete("/deleteBlog/:id", isTokenIsValid, blogController.deleteBlog);
 
-router.get("/getBlogById/:id", isTokenIsValid, blogController.getBlogById);
+router.get("/getBlogById", isTokenIsValid, blogController.getBlogById);
+
+router.post("/blog-commit/:id", isTokenIsValid, blogController.blogCommit);
+
+router.get("/blogLike/:id", isTokenIsValid, blogController.blogLike);
+
+router.get("/blogDisLike/:id", isTokenIsValid, blogController.blogDisLike);
 
 module.exports = router;
