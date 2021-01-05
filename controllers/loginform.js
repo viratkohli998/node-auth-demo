@@ -116,6 +116,7 @@ exports.login = (req, res, next) => {
             ResponseStatus: 0,
             message: "login successfully",
             token: jwtToken,
+            data: results,
           });
         }
         res.status(200).json({
@@ -353,4 +354,3 @@ exports.resetPassword = async (req, res) => {
     }
   });
 };
-
