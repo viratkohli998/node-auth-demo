@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const multer = require("multer");
+
 const loginController = require("../controllers/loginform");
 const isTokenIsValid = require("../middleware/auth");
-const multer = require("multer");
 
 const upload = multer({
   storage: multer.diskStorage({

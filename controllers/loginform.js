@@ -11,7 +11,6 @@ const validationSignIn = require("../validation/loginform");
 const validationUpdateProfile = require("../validation/updateProfile");
 const validationLogin = require("../validation/login");
 const validationChangePassword = require("../validation/changePassword");
-const isEmpty = require("../validation/is-empty");
 
 exports.loginData = (req, res) => {
   user.find({}, function (err, data) {
