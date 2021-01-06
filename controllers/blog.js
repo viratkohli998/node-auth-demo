@@ -46,20 +46,28 @@ exports.createBlog = async (req, res) => {
     });
 };
 
-exports.deleteBlog = function (req, res) {
-  blog
-    .findByIdAndRemove(req.params.id)
-    .then((results) => {
-      res.status(201).json({
-        ResponseStatus: 0,
-        message: "delete blog successfully",
+exports.deleteBlog = async (req, res) => {
+  const blogUserId = await blog.findOne({ _id: req.params.id });
+  if (blogUserId.userId === req.user.id) {
+    blog
+      .findByIdAndRemove(req.params.id)
+      .then((results) => {
+        res.status(201).json({
+          ResponseStatus: 0,
+          message: "delete blog successfully",
+        });
+      })
+      .catch((err) => {
+        res.status(504).json({
+          message: "Not Found",
+        });
       });
-    })
-    .catch((err) => {
-      res.status(504).json({
-        message: "Not Found",
-      });
+  } else {
+    res.status(201).json({
+      ResponseStatus: 0,
+      message: "You are not valid user to delete blog",
     });
+  }
 };
 
 exports.getBlogById = function (req, res) {
